@@ -139,3 +139,80 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+// blog navigation functionality
+document.addEventListener("DOMContentLoaded", function () {
+  // Add click event to blog post items
+  const blogPostItems = document.querySelectorAll(".blog-post-item a");
+  const blogDetails = document.querySelectorAll(".blog-details");
+  
+  blogPostItems.forEach(function (item) {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      
+      // Hide all blog detail sections
+      blogDetails.forEach(function (detail) {
+        detail.style.display = "none";
+      });
+      
+      // Show the targeted blog detail section
+      const targetDetail = document.querySelector(targetId);
+      if (targetDetail) {
+        targetDetail.style.display = "block";
+        targetDetail.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+  
+  // Add back to blog list functionality
+  const backButtons = document.querySelectorAll(".back-to-blog");
+  backButtons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      
+      // Hide all blog detail sections
+      blogDetails.forEach(function (detail) {
+        detail.style.display = "none";
+      });
+      
+      // Scroll back to blog posts list
+      document.querySelector(".blog-posts").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+});
+
+// PDF Viewer Toggle Function
+function togglePdfViewer() {
+  const pdfViewer = document.getElementById('pdf-viewer');
+  if (pdfViewer.style.display === 'none' || pdfViewer.style.display === '') {
+    pdfViewer.style.display = 'block';
+    pdfViewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    pdfViewer.style.display = 'none';
+  }
+}
+
+// Read More Toggle Function
+function toggleReadMore() {
+  const expandedContent = document.getElementById('expanded-about');
+  const readMoreBtn = document.querySelector('.read-more-btn');
+  const readMoreText = document.getElementById('read-more-text');
+  const readMoreIcon = document.getElementById('read-more-icon');
+  
+  if (expandedContent.style.display === 'none' || expandedContent.style.display === '') {
+    expandedContent.style.display = 'block';
+    setTimeout(() => {
+      expandedContent.classList.add('show');
+    }, 10);
+    readMoreText.textContent = 'Show Less';
+    readMoreBtn.classList.add('expanded');
+  } else {
+    expandedContent.classList.remove('show');
+    setTimeout(() => {
+      expandedContent.style.display = 'none';
+    }, 400);
+    readMoreText.textContent = 'Discover My Journey';
+    readMoreBtn.classList.remove('expanded');
+  }
+}
