@@ -1,0 +1,113 @@
+:root {
+  /* Color Palette - Dark Theme (Default) */
+  --bg: #090d16;
+  --bg-elevated: #0f172a;
+  --surface: #131c31;
+  --surface-2: #1b2744;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  
+  --text: #f8fafc;
+  --text-dim: #94a3b8;
+  --muted: #64748b;
+  
+  --primary: #3b82f6;
+  --primary-strong: #2563eb;
+  --primary-hover: #60a5fa;
+  --primary-glow: rgba(59, 130, 246, 0.25);
+  
+  --accent: #06b6d4;
+  --accent-soft: #14b8a6;
+  --accent-glow: rgba(6, 182, 212, 0.25);
+
+  --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.2);
+  --purple: #8b5cf6;
+  --amber: #f59e0b;
+  --danger: #ef4444;
+
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --line-soft: rgba(255, 255, 255, 0.05);
+
+  /* Gradients & Cards */
+  --bg-orb-1: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+  --bg-orb-2: radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+  --header-bg: rgba(9, 13, 22, 0.85);
+  --section-bg: rgba(15, 23, 42, 0.6);
+  --card-bg: rgba(19, 28, 49, 0.7);
+  --card-hover-bg: rgba(27, 39, 68, 0.85);
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --badge-bg: rgba(59, 130, 246, 0.12);
+
+  /* Terminal */
+  --terminal-bg: #050811;
+  --terminal-header: #0e1526;
+  --terminal-text: #38bdf8;
+
+  /* Layout & Spacing */
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
+
+  --container: min(1280px, 92vw);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-border: rgba(0, 0, 0, 0.08);
+
+  --text: #0f172a;
+  --text-dim: #475569;
+  --muted: #64748b;
+
+  --primary: #2563eb;
+  --primary-strong: #1d4ed8;
+  --primary-hover: #3b82f6;
+  --primary-glow: rgba(37, 99, 235, 0.15);
+
+  --accent: #0284c7;
+  --accent-soft: #0d9488;
+  --accent-glow: rgba(2, 132, 199, 0.15);
+
+  --emerald: #059669;
+  --emerald-glow: rgba(5, 150, 105, 0.15);
+  --purple: #7c3aed;
+  --amber: #d97706;
+  --danger: #dc2626;
+
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.18);
+  --line-soft: rgba(0, 0, 0, 0.05);
+
+  --bg-orb-1: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 40%);
+  --bg-orb-2: radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.06) 0%, transparent 40%);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --section-bg: rgba(248, 250, 252, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-hover-bg: #ffffff;
+  --panel-bg: rgba(0, 0, 0, 0.02);
+  --badge-bg: rgba(37, 99, 235, 0.08);
+
+  --terminal-bg: #0f172a;
+  --terminal-header: #1e293b;
+  --terminal-text: #38bdf8;
+
+  --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.14);
+  --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.15);
+}

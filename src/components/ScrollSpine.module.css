@@ -1,0 +1,118 @@
+.spineContainer {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .spineContainer {
+    display: block;
+    position: fixed;
+    left: 1.25rem;
+    top: calc(var(--nav-height) + 1.5rem);
+    bottom: 2.5rem;
+    width: 2px;
+    z-index: 40;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .rail {
+    position: absolute;
+    inset: 0;
+    width: 2px;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    border-radius: 999px;
+  }
+
+  .progressFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    transform-origin: top center;
+    background: linear-gradient(
+      180deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 70%, #ffffff)
+    );
+    border-radius: 999px;
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+
+  .dotWrap {
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    position: relative;
+    z-index: 2;
+  }
+
+  .dotGlow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+    animation: pulseGlow 2.5s ease-in-out infinite;
+  }
+
+  .tooltip {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-family: 'Fira Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--nav-steel, #8ba3c7);
+    background: rgba(12, 16, 26, 0.92);
+    border: 1px solid color-mix(in srgb, var(--nav-steel, #8ba3c7) 30%, transparent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  [data-theme='light'] .tooltip {
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--nav-steel, #5b6f8c);
+    border-color: color-mix(in srgb, var(--nav-steel, #5b6f8c) 25%, transparent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .percentText {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .sectionLabel {
+    color: var(--text-muted, #a1a1aa);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.8;
+  }
+}

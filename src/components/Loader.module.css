@@ -1,0 +1,59 @@
+.initialOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #090b10;
+}
+
+.initialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border-hover);
+  border-top-color: var(--text-muted);
+  animation: loader-spin 0.8s linear infinite;
+}
+
+.label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.internalWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  pointer-events: none;
+}
+
+.internalBar {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--text-faint), transparent);
+  animation: loader-slide 0.7s ease-in-out infinite;
+}
+
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loader-slide {
+  0% { transform: translateX(-30%); opacity: 0.5; }
+  50% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(30%); opacity: 0.5; }
+}

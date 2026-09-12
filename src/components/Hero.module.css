@@ -1,0 +1,300 @@
+.hero {
+  --hero-ink: #09090b;
+  --hero-chalk: #f4f4f5;
+  --hero-muted: #a1a1aa;
+  --hero-steel: #8ba3c7;
+  --hero-steel-soft: #8ba3c733;
+  --hero-steel-mid: #8ba3c766;
+  --hero-paper: #eef1f5;
+  --hero-display: 'DM Sans', system-ui, sans-serif;
+  --hero-sans: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  --hero-hand: 'Caveat', cursive;
+
+  /* Note From The Desk — dark (frame Y0tO3x) */
+  --note-card-bg: #12141a;
+  --note-card-stroke: #a3b1d640;
+  --note-card-shadow: 0 10px 28px #8ba3c71f;
+  --note-card-pad: 40px;
+  --note-card-gap: 32px;
+  --note-card-radius: 32px;
+  --note-title: #a3b1d6;
+  --note-body: #f8fafc;
+  --note-desk-bg: #1f2229;
+  --note-desk-stroke: transparent;
+  --desk-stroke: #c5d0e0;
+  --note-chip-bg: #1f2229;
+  --note-chip-stroke: transparent;
+  --note-value: #ffffff;
+  --note-label: #808b99;
+
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 2.5rem) 0 4.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 85% 20%, rgba(139, 163, 199, 0.08), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(139, 163, 199, 0.05), transparent 50%),
+    var(--hero-ink);
+  color: var(--hero-chalk);
+}
+
+[data-theme='light'] .hero {
+  --hero-ink: #f4f4f5;
+  --hero-chalk: #18181b;
+  --hero-muted: #52525b;
+  --hero-steel: #5b6f8c;
+  --hero-steel-soft: #8ba3c755;
+  --hero-steel-mid: #5b6f8c66;
+
+  /* Note From The Desk — light (frame srUsb) */
+  --note-card-bg: #eef1f5;
+  --note-card-stroke: #cbd5e1;
+  --note-card-shadow: 0 10px 28px rgba(91, 111, 140, 0.1);
+  --note-card-pad: 32px;
+  --note-card-gap: 18px;
+  --note-card-radius: 28px;
+  --note-title: #5b6f8c;
+  --note-body: #263140;
+  --note-desk-bg: #ffffff;
+  --note-desk-stroke: #d7dee8;
+  --desk-stroke: #5b6f8c;
+  --note-chip-bg: #ffffff;
+  --note-chip-stroke: #d7dee8;
+  --note-value: #18181b;
+  --note-label: #5b6470;
+
+  background:
+    radial-gradient(ellipse 70% 50% at 85% 20%, rgba(91, 111, 140, 0.12), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(139, 163, 199, 0.1), transparent 50%),
+    var(--hero-ink);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  width: 100%;
+}
+
+.content {
+  max-width: 42rem;
+  z-index: 1;
+}
+
+.hand {
+  font-family: var(--hero-hand);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--hero-steel);
+  margin-bottom: 0.35rem;
+}
+
+.name {
+  font-family: var(--hero-display);
+  font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--hero-chalk);
+  margin-bottom: 0.85rem;
+  text-wrap: balance;
+}
+
+.nameLine {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.nameWord {
+  display: block;
+}
+
+.role {
+  font-family: var(--hero-sans);
+  font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+  font-weight: 400;
+  color: var(--hero-muted);
+  margin-bottom: 1.15rem;
+}
+
+.bio {
+  font-family: var(--hero-sans);
+  font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
+  color: var(--hero-chalk);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 36rem;
+  opacity: 0.92;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+  font-family: var(--hero-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.ctaPrimary {
+  background: var(--hero-steel);
+  color: var(--hero-ink);
+  border: 1px solid transparent;
+}
+
+.ctaPrimary:hover {
+  opacity: 1;
+  color: var(--hero-ink);
+  filter: brightness(1.06);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--hero-chalk);
+  border: 1px solid var(--hero-steel-mid);
+  font-weight: 500;
+}
+
+.ctaSecondary:hover {
+  opacity: 1;
+  color: var(--hero-chalk);
+  border-color: var(--hero-steel);
+}
+
+.noteStage {
+  width: 100%;
+  max-width: 30rem;
+  justify-self: end;
+  z-index: 1;
+}
+
+.noteCard {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--note-card-gap);
+  padding: var(--note-card-pad);
+  border-radius: var(--note-card-radius);
+  background: var(--note-card-bg);
+  border: 1px solid var(--note-card-stroke);
+  box-shadow: var(--note-card-shadow);
+}
+
+.noteHand {
+  font-family: var(--hero-hand);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--note-title);
+  line-height: 1.2;
+}
+
+.noteBody {
+  font-family: var(--hero-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--note-body);
+}
+
+.proofRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.proofChip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 16px;
+  border-radius: 16px;
+  background: var(--note-chip-bg);
+  border: 1px solid var(--note-chip-stroke);
+}
+
+.proofValue {
+  font-family: var(--hero-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--note-value);
+}
+
+.proofLabel {
+  font-size: 0.6875rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--note-label);
+}
+
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .noteStage {
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: calc(var(--nav-height) + 1.75rem) 0 3rem;
+    --note-card-pad: 24px;
+    --note-card-gap: 20px;
+  }
+
+  .proofGrid {
+    gap: 8px;
+  }
+
+  .proofChip {
+    padding: 12px 8px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .proofValue {
+    font-size: 1.05rem;
+  }
+
+  .proofLabel {
+    font-size: 0.625rem;
+    letter-spacing: 0.8px;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noteCard {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,83 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  position: relative;
+  z-index: 1;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.category {
+  background: var(--surface);
+  padding: 1.75rem;
+  transition: background var(--transition);
+}
+
+.category:hover {
+  background: var(--surface-2);
+}
+
+.catHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.catDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  flex-shrink: 0;
+}
+
+.catTitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillTag {
+  min-height: 1.9rem;
+  padding-inline: 0.75rem;
+  transition: border-color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.skillTag:hover {
+  border-color: var(--border-hover);
+}
+
+.skillTagActive {
+  border-color: var(--accent) !important;
+  background: var(--accent-dim);
+  color: var(--text-heading);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.skillTagDim {
+  opacity: 0.4;
+}
+
+.latticeFallback {
+  height: min(640px, 72vh);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}

@@ -1,0 +1,647 @@
+.navbar {
+  --nav-steel: #8ba3c7;
+  --nav-steel-soft: rgba(139, 163, 199, 0.25);
+  --nav-pill: rgba(12, 16, 26, 0.98);
+  --nav-chalk: #f4f4f5;
+  --nav-muted: #a1a1aa;
+  --nav-ink: #09090b;
+  --nav-switch: #8ba3c7;
+  --nav-switch-ink: #09090b;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: auto;
+  min-height: var(--nav-height);
+  background: transparent;
+  pointer-events: none;
+  view-transition-name: site-nav;
+}
+
+.navbar.scrolled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 11, 0.85) 0%,
+    rgba(9, 9, 11, 0.35) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+[data-theme='light'] .navbar.scrolled::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 246, 249, 0.88) 0%,
+    rgba(244, 246, 249, 0.35) 60%,
+    transparent 100%
+  );
+}
+
+[data-theme='light'] .navbar {
+  --nav-pill: rgba(255, 255, 255, 0.98);
+  --nav-chalk: #18181b;
+  --nav-muted: #52525b;
+  --nav-ink: #f4f4f5;
+  --nav-steel-soft: rgba(91, 111, 140, 0.2);
+  --nav-switch: #5b6f8c;
+  --nav-switch-ink: #ffffff;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  padding: 1.1rem 1.25rem 0.5rem;
+  pointer-events: none;
+}
+
+.splashOverlay {
+  --splash-bg: #09090b;
+  --splash-bg-lift: #0f1218;
+  --splash-ink: #f4f4f5;
+  --splash-muted: #a1a1aa;
+  --splash-steel: #8ba3c7;
+  --splash-steel-rgb: 139, 163, 199;
+  --splash-amber: #ff9900;
+  --cloud-top: #aebfd6;
+  --cloud-bottom: #7f98bf;
+  --cloud-stroke: #c9d4e3;
+
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 50% 46%,
+      var(--splash-bg-lift),
+      var(--splash-bg) 72%
+    );
+}
+
+/* Soft vignette so the stage reads as a lit surface, not a flat fill */
+.splashOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.42)
+  );
+}
+
+[data-theme='light'] .splashOverlay {
+  --splash-bg: #e8ecf1;
+  --splash-bg-lift: #f4f6f9;
+  --splash-ink: #18181b;
+  --splash-muted: #52525b;
+  --splash-steel: #5b6f8c;
+  --splash-steel-rgb: 91, 111, 140;
+  --splash-amber: #ec7211;
+  --cloud-top: #7a8fad;
+  --cloud-bottom: #5b6f8c;
+  --cloud-stroke: #405169;
+}
+
+[data-theme='light'] .splashOverlay::after {
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 55%,
+    rgba(24, 24, 27, 0.08)
+  );
+}
+
+.splashStage {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 56rem);
+  height: clamp(13rem, 34vh, 19rem);
+}
+
+.splashBloom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: clamp(22rem, 64vw, 44rem);
+  aspect-ratio: 1.7;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--splash-steel-rgb), 0.28),
+    rgba(var(--splash-steel-rgb), 0.08) 42%,
+    transparent 70%
+  );
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.splashNameGroup {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.splashLockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  width: fit-content;
+}
+
+.splashWordWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splashWord {
+  /* Same face as .brandLabel so FLIP into the nav word reads as one glyph */
+  display: block;
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(2.8rem, 9vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--splash-ink);
+  white-space: nowrap;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+.splashLetter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Steel rule sits in the same gap as the role, so both sides match */
+.splashRule {
+  display: block;
+  align-self: stretch;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--splash-steel),
+    rgba(var(--splash-steel-rgb), 0.35)
+  );
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.splashRole {
+  margin: 0;
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.7vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--splash-muted);
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.splashRole span {
+  color: var(--splash-muted);
+  opacity: 0.6;
+}
+
+.splashRole strong {
+  color: var(--splash-amber);
+  font-weight: 600;
+}
+
+.cloudMark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: clamp(18rem, 54vw, 35rem);
+  aspect-ratio: 138.3385 / 75.6013;
+  translate: -50% -50%;
+  overflow: visible;
+  filter: drop-shadow(0 22px 40px rgba(var(--splash-steel-rgb), 0.22));
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.cloudGhost {
+  opacity: 0.22;
+}
+
+.brandLabel {
+  display: block;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.navbar.introBusy {
+  z-index: 200;
+}
+
+.navbar.introBusy .pill {
+  pointer-events: none;
+}
+
+.pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: fit-content;
+  max-width: min(1120px, 100%);
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: var(--nav-pill);
+  border: 1px solid var(--nav-steel-soft);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  /* Match brandFlySpring visualDuration 0.72; ease approximates soft spring settle */
+  transition: gap 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.navbar.scrolled .pill {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.7);
+  border-color: color-mix(in srgb, var(--nav-steel) 50%, transparent);
+}
+
+.navbar.collapsed .pill {
+  gap: 0.55rem;
+  padding: 0.6rem 0.9rem;
+  transition-duration: 0.4s;
+}
+
+[data-theme='light'] .pill {
+  box-shadow: 0 8px 28px rgba(24, 24, 27, 0.08);
+}
+
+.logo {
+  flex-shrink: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--nav-chalk);
+  text-decoration: none;
+  min-height: 1.25rem;
+}
+.logo:hover {
+  opacity: 1;
+  color: var(--nav-chalk);
+}
+
+.desktopNavClip {
+  display: grid;
+  grid-template-columns: 0fr;
+  min-width: 0;
+  /* Collapse snappier; open uses .desktopNavClipOpen duration */
+  transition: grid-template-columns 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktopNavClipOpen {
+  grid-template-columns: 1fr;
+  /* Same 0.72s visual window as splash brand fly spring */
+  transition: grid-template-columns 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktopNavClipInner {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.desktopNavClipOpen .desktopNav {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.navbar.expanded .pill {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill,
+  .navbar.collapsed .pill,
+  .desktopNavClip,
+  .desktopNavClipOpen,
+  .desktopNav,
+  .desktopNavClipOpen .desktopNav,
+  .viewSlot,
+  .viewSlotOpen,
+  .themeSlot,
+  .themeSlotOpen {
+    transition: none;
+  }
+}
+
+.linkRow {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.navLink {
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--nav-muted);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+.navLink:hover {
+  color: var(--nav-chalk);
+  opacity: 1;
+}
+.navLink:focus-visible {
+  outline: 2px solid var(--nav-steel);
+  outline-offset: 3px;
+}
+.navLink.active {
+  color: var(--nav-steel);
+}
+
+.navExtras {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin-left: 0.1rem;
+  flex-shrink: 0;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Keep mounted during splash; collapse out of flow so brand FLIP measure stays logo-only */
+.navExtrasHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+.viewSlot {
+  display: grid;
+  grid-template-columns: 0fr;
+  min-width: 0;
+  transition: grid-template-columns 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.viewSlotOpen {
+  grid-template-columns: 1fr;
+  transition: grid-template-columns 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.viewSlotInner {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.viewSwitch {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+  padding: 0.2rem;
+  border: 1px solid var(--nav-steel-soft);
+  border-radius: 999px;
+}
+
+.viewSwitch button {
+  min-height: 1.85rem;
+  padding: 0.25rem 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--nav-muted);
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.viewSwitch button:hover {
+  color: var(--nav-chalk);
+}
+
+.viewSwitch button.viewOptionActive {
+  background: var(--nav-switch);
+  color: var(--nav-switch-ink);
+  font-weight: 600;
+}
+
+.viewSwitch button:focus-visible {
+  outline: 2px solid var(--nav-steel);
+  outline-offset: 2px;
+}
+
+.viewSlot:not(.viewSlotOpen) .viewSwitch {
+  pointer-events: none;
+}
+
+.themeSlot {
+  display: grid;
+  grid-template-columns: 0fr;
+  min-width: 0;
+  transition: grid-template-columns 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.themeSlotOpen {
+  grid-template-columns: 1fr;
+  transition: grid-template-columns 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.themeSlotInner {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.themeSlot:not(.themeSlotOpen) .themeToggle {
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.themeToggle {
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--nav-muted);
+  padding: 0.35rem 0.7rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition);
+  flex-shrink: 0;
+}
+.themeToggle:hover {
+  color: var(--nav-chalk);
+  opacity: 1;
+}
+.themeToggle:focus-visible {
+  outline: 2px solid var(--nav-steel);
+  outline-offset: 3px;
+}
+
+.resumeCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: var(--nav-steel);
+  color: var(--nav-ink);
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter var(--transition);
+}
+.resumeCta:hover {
+  opacity: 1;
+  color: var(--nav-ink);
+  filter: brightness(1.06);
+}
+
+.mobileNav {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0.35rem 1.25rem 0;
+  background: var(--nav-pill);
+  border: 1px solid var(--nav-steel-soft);
+  border-radius: 22px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 0.55rem 1rem 0.85rem;
+  overflow: hidden;
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.mobileLink {
+  font-family: 'IBM Plex Sans', 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--nav-muted);
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--nav-steel) 18%, transparent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.mobileLink:last-child {
+  border-bottom: none;
+}
+.mobileLink:hover,
+.mobileLink.active {
+  color: var(--nav-steel);
+  opacity: 1;
+}
+
+@media (max-width: 820px) {
+  .splashStage {
+    width: 94vw;
+    height: 14rem;
+  }
+
+  .splashWord {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+  }
+
+  .splashLockup {
+    gap: 0.55rem;
+  }
+
+  .desktopNav {
+    display: none !important;
+  }
+
+  .pill {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .navExtras {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 821px) {
+  .mobileNav {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navExtras {
+    transition: none;
+  }
+}
