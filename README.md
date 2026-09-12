@@ -18,3 +18,4 @@ High-performance personal portfolio built with **React**, **Vite**, **Framer Mot
 - **Frontend**: React 18, Vite, Framer Motion, CSS Modules, Three.js
 - **Backend / Cloud**: Node.js, NestJS, TypeScript, AWS (Lambda, Kinesis, Glue, S3, SQS, EC2)
 - **Deployment**: GitHub Actions + GitHub Pages
+
