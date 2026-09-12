@@ -1,21 +1,21 @@
 /**
- * Handful Tools data.
+ * Handful Tools & Open Source Utilities data.
  */
 export const tools = [
   {
-    name: 'MDViewer',
-    description: 'A markdown viewer with a print to PDF option. Supports customization of fonts and includes a built-in Mermaid chart editor.',
-    tags: ['Markdown', 'PDF', 'Mermaid'],
-    github: 'https://github.com/soumyadeepdutta/mdviewer',
-    live: 'https://soumyadeepdutta.github.io/mdviewer/',
+    name: 'AetherProxy',
+    description: 'High-throughput Node.js microservice proxy & rate limiter designed for enterprise API security and sub-second latency.',
+    tags: ['Node.js', 'Express', 'Redis', 'RateLimiting'],
+    github: 'https://github.com/k1chandrasekhar',
+    live: 'https://github.com/k1chandrasekhar',
     color: 'blue',
   },
   {
-    name: 'Pass-Meter',
-    description: 'A 100% tracker-free random password generator that helps you generate strong and secure passwords without compromising your privacy.',
-    tags: ['Security', 'Privacy', 'Password Generator'],
-    github: 'https://github.com/soumyadeepdutta/pass-meter',
-    live: 'https://soumyadeepdutta.github.io/pass-meter/',
+    name: 'Comms Dispatcher',
+    description: 'Event-driven AWS SQS + Lambda worker dispatcher handling multi-channel SMS, Email, and Push Notifications.',
+    tags: ['AWS SQS', 'AWS Lambda', 'Node.js', 'EventBridge'],
+    github: 'https://github.com/k1chandrasekhar',
+    live: 'https://github.com/k1chandrasekhar',
     color: 'green',
   },
 ]

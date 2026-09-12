@@ -36,7 +36,7 @@ export default function Contact() {
           <div className={styles.personalSide}>
             <img
               src="/profile.png"
-              alt="Soumyadeep Dutta"
+              alt="Kamjula ChandraSekhar"
               className={styles.photo}
               width="120"
               height="120"
@@ -50,7 +50,7 @@ export default function Contact() {
           {/* Right: contact methods */}
           <div className={styles.contactSide}>
             <a
-              href="mailto:imsoumyadeepdutta@gmail.com"
+              href="mailto:chandrasekhar.k.work@gmail.com"
               className={styles.contactMethod}
             >
               <span className={styles.contactIcon}>
@@ -60,7 +60,7 @@ export default function Contact() {
               </span>
               <div>
                 <span className={styles.contactLabel}>Email</span>
-                <span className={styles.contactValue}>imsoumyadeepdutta@gmail.com</span>
+                <span className={styles.contactValue}>chandrasekhar.k.work@gmail.com</span>
               </div>
             </a>
 
