@@ -734,6 +734,39 @@ export default function Navbar({
                 prefersReduced ? instant : { duration: 0.28, ease: easeOut }
               }
             >
+              <div className={styles.mobileHeaderRow}>
+                <div
+                  className={styles.mobileViewSwitch}
+                  role="group"
+                  aria-label="Portfolio view mode"
+                >
+                  <button
+                    type="button"
+                    className={
+                      viewMode === 'portfolio' ? styles.viewOptionActive : ''
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onViewModeChange?.('portfolio')
+                    }}
+                  >
+                    Portfolio View
+                  </button>
+                  <button
+                    type="button"
+                    className={
+                      viewMode === 'brief' ? styles.viewOptionActive : ''
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onViewModeChange?.('brief')
+                    }}
+                  >
+                    Brief Resume
+                  </button>
+                </div>
+              </div>
+
               <motion.div
                 className={styles.mobileList}
                 variants={{
